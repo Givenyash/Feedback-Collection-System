@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback Dashboard</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="/js/dashboard.js"></script>
+
+</head>
+
+<body class="bg-white">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white px-6 py-4 flex items-center">
+    <span class="text-2xl mr-2">💬</span>
+    <h1 class="text-xl font-semibold">FeedBack System</h1>
+  </header>
+
+  <!-- Main Container -->
+  <main class="p-6">
+
+    <!-- Feedback Table -->
+    <div class="border border-blue-500 rounded-md overflow-hidden">
+      <table class="w-full text-left border-collapse">
+        <thead class="bg-blue-50 text-blue-600">
+          <tr>
+            <th class="border border-blue-500 px-4 py-2">Sl.NO</th>
+            <th class="border border-blue-500 px-4 py-2">User Name</th>
+            <th class="border border-blue-500 px-4 py-2">Email</th>
+            <th class="border border-blue-500 px-4 py-2">Feedback Category</th>
+            <th class="border border-blue-500 px-4 py-2">Comments</th>
+            <th class="border border-blue-500 px-4 py-2">DateTime</th>
+          </tr>
+        </thead>
+
+       <tbody id="feedbackTable">
+    </tbody>
+
+      </table>
+    </div>
+
+   <section class="mt-12 bg-blue-100 p-10 rounded-lg text-center">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-8">
+        Feedback Analysis
+    </h2>
+
+    <div class="flex flex-wrap justify-center gap-6">
+        
+        <div class="bg-blue-600 text-white px-6 py-4 rounded-md w-48 font-medium hover:bg-blue-800 flex flex-col justify-center items-center">
+            <span id="count-total" class="text-3xl font-bold block mb-1">0</span>
+            <span>Total Feedbacks</span>
+        </div>
+
+        <div class="bg-blue-600 text-white px-6 py-4 rounded-md w-48 font-medium hover:bg-blue-800 flex flex-col justify-center items-center">
+            <span id="count-product" class="text-3xl font-bold block mb-1">0</span>
+            <span>Product Feedbacks</span>
+        </div>
+
+        <div class="bg-blue-600 text-white px-6 py-4 rounded-md w-48 font-medium hover:bg-blue-800 flex flex-col justify-center items-center">
+            <span id="count-customer" class="text-3xl font-bold block mb-1">0</span>
+            <span>Customer Feedbacks</span>
+        </div>
+
+        <div class="bg-blue-600 text-white px-6 py-4 rounded-md w-48 font-medium hover:bg-blue-800 flex flex-col justify-center items-center">
+            <span id="count-review" class="text-3xl font-bold block mb-1">0</span>
+            <span>Review Feedbacks</span>
+        </div>
+
+        <div class="bg-blue-600 text-white px-6 py-4 rounded-md w-48 font-medium hover:bg-blue-800 flex flex-col justify-center items-center">
+            <span id="count-others" class="text-3xl font-bold block mb-1">0</span>
+            <span>Others</span>
+        </div>
+
+    </div>
+</section>
+
+  </main>
+
+</body>
+</html>
