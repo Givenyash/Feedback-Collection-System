@@ -58,6 +58,15 @@ app.get('/api/all-feedbacks', async (req, res) => {
         res.status(500).json({ message: 'Error fetching feedbacks' });
     }
 });
+// DELETE: Remove a specific feedback by ID
+app.delete('/api/delete-feedback/:id', async (req, res) => {
+    try {
+        await Feedback.findByIdAndDelete(req.params.id);
+        res.json({ message: 'Feedback deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting feedback' });
+    }
+});
 
 // Start Server
 app.listen(PORT, () => {
