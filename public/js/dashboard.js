@@ -90,27 +90,37 @@ function updateAnalysis(feedbacks) {
   document.getElementById("count-others").innerText = counts.others;
 }
 
-function setupCheckboxListeners() {
-    const selectAll = document.getElementById('selectAll');
-    const checkboxes = document.querySelectorAll('.row-checkbox');
-    const deleteBtn = document.getElementById('deleteSelectedBtn');
+// Function to filter the table
+function searchTable() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toLowerCase();
+    const tbody = document.getElementById("feedbackTable"); 
+    const tr = tbody.getElementsByTagName("tr");
 
-    // Toggle all checkboxes
-    selectAll.addEventListener('change', () => {
-        checkboxes.forEach(cb => cb.checked = selectAll.checked);
-        toggleDeleteButton();
-    });
-
-    checkboxes.forEach(cb => {
-        cb.addEventListener('change', toggleDeleteButton);
-    });
-
-    function toggleDeleteButton() {
-        const checkedCount = document.querySelectorAll('.row-checkbox:checked').length;
-        if (checkedCount > 0) {
-            deleteBtn.classList.remove('hidden');
-        } else {
-            deleteBtn.classList.add('hidden');
+    for (let i = 0; i < tr.length; i++) {
+        // Index 1 is User Name, Index 2 is Email column
+        const nameCol = tr[i].getElementsByTagName("td")[1];
+        const emailCol = tr[i].getElementsByTagName("td")[2];
+        
+        if (nameCol || emailCol) {
+            const nameText = nameCol.textContent || nameCol.innerText;
+            const emailText = emailCol.textContent || emailCol.innerText;
+            
+            // Show row if it matches name OR email
+            if (nameText.toLowerCase().indexOf(filter) > -1 || 
+                emailText.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
         }
     }
 }
+
+// Function to handle logout
+function logout() {
+    localStorage.removeItem('isLoggedIn');
+    window.location.href = '/login';
+}
+
+
